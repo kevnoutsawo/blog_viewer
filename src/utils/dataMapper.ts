@@ -12,6 +12,6 @@ export const mapDummyJsonPostToBlogPost = (post: DummyJsonPost, user: DummyJsonU
   title: post.title,
   content: post.body,
   author: mapDummyJsonUserToAuthor(user),
-  createdAt: new Date().toISOString(), // TODO: Use actual creation date from API when available
+  createdAt: new Date().toISOString(), // Using current date for form but and actual date would have been used if available
   likes: post.reactions?.likes || 0,
 });
