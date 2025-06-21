@@ -273,10 +273,7 @@ const Home: React.FC = () => {
                     transition={{ duration: 0.2 }}
                   >
                     <div className="text-3xl font-black bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                      <NumberFlow
-                        plugins={[continuous]}
-                        value={posts.length}
-                      />
+                      {posts.length}
                     </div>
                     <div className="text-xs text-slate-500 dark:text-slate-400 uppercase tracking-wider font-semibold">Posts</div>
                   </motion.div>
