@@ -15,4 +15,4 @@ I built a little service to fetch the data from the api. Then made a mapper to s
 
 - Search functionality
 - Typescript
-- 
+  
