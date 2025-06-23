@@ -7,7 +7,7 @@ import { mapDummyJsonPostToBlogPost } from '../utils/dataMapper';
 import type { BlogPost } from '../types/blog';
 import { useLikedPosts } from '../hooks/useLikedPosts';
 import { Button } from '../components/ui/button';
-import { Avatar, AvatarImage, AvatarFallback } from '../components/ui/avatar';
+import LazyAvatar from '../components/LazyAvatar';
 import { Card, CardContent } from '../components/ui/card';
 import { ArrowLeft, Heart, Clock, Calendar } from 'lucide-react';
 
@@ -105,12 +105,12 @@ const PostDetailContent = ({ post }: { post: BlogPost }) => {
                     animate={{ scale: 1 }}
                     transition={{ duration: 0.5, delay: 0.4 }}
                   >
-                    <Avatar className="h-16 w-16 border-3 border-white/50 dark:border-slate-600/50 shadow-xl">
-                      <AvatarImage src={post?.author?.avatarUrl} alt={authorName} />
-                      <AvatarFallback className="bg-gradient-to-br from-blue-500 to-purple-500 text-white text-lg font-bold">
-                        {authorInitials}
-                      </AvatarFallback>
-                    </Avatar>
+                    <LazyAvatar
+                      src={post?.author?.avatarUrl}
+                      alt={authorName}
+                      fallbackText={authorInitials}
+                      className="h-16 w-16 border-3 border-white/50 dark:border-slate-600/50 shadow-xl"
+                    />
                   </motion.div>
                   <div>
                     <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100">{authorName}</h2>

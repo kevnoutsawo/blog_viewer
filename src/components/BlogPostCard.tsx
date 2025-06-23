@@ -5,7 +5,7 @@ import { Heart, Clock, Calendar } from 'lucide-react';
 import NumberFlow, { continuous } from '@number-flow/react';
 import type { BlogPost } from '../types/blog';
 import { useLikedPosts } from '../hooks/useLikedPosts';
-import { Avatar, AvatarImage, AvatarFallback } from './ui/avatar';
+import LazyAvatar from './LazyAvatar';
 import { cn } from '../lib/utils';
 
 interface BlogPostCardProps {
@@ -111,12 +111,12 @@ const BlogPostCard: React.FC<BlogPostCardProps> = ({ post, index = 0 }) => {
         <div className="p-4 sm:p-6 space-y-3 sm:space-y-4">
           {/* Author info */}
           <div className="flex items-center gap-2 sm:gap-3">
-            <Avatar className="w-8 h-8 sm:w-10 sm:h-10 border-2 border-white/50 dark:border-slate-600/50 shadow-lg">
-              <AvatarImage src={post.author?.avatarUrl} alt={authorName} />
-              <AvatarFallback className="bg-gradient-to-br from-blue-500 to-purple-500 text-white text-xs sm:text-sm font-semibold">
-                {authorInitials}
-              </AvatarFallback>
-            </Avatar>
+            <LazyAvatar
+              src={post.author?.avatarUrl}
+              alt={authorName}
+              fallbackText={authorInitials}
+              className="w-8 h-8 sm:w-10 sm:h-10 border-2 border-white/50 dark:border-slate-600/50 shadow-lg"
+            />
             <div className="flex-1 min-w-0">
               <p className="text-xs sm:text-sm font-semibold text-slate-800 dark:text-slate-200 truncate">
                 {authorName}

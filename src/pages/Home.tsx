@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import NumberFlow, { continuous } from '@number-flow/react';
 import { usePosts } from '../hooks/usePosts';
-import BlogPostCard from '../components/BlogPostCard';
+import LazyBlogPostCard from '../components/LazyBlogPostCard';
 import { useSearch } from '../hooks/useSearch';
 
 const Home: React.FC = () => {
@@ -303,18 +303,11 @@ const Home: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             {filteredPosts.map((post, index) => (
-              <motion.div
+              <LazyBlogPostCard
                 key={post.id}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  duration: 0.5,
-                  delay: index * 0.05,
-                  ease: [0.25, 0.46, 0.45, 0.94]
-                }}
-              >
-                <BlogPostCard post={post} index={index} />
-              </motion.div>
+                post={post}
+                index={index}
+              />
             ))}
           </motion.div>
         ) : (
